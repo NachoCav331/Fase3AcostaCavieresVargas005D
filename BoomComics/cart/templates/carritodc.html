@@ -1,0 +1,63 @@
+<!-- carrito -->
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+        {% load static %}
+        <img src="{%static 'images/c.png' %}" class="nav-link dropdown-toggle img-fluid" height="40px"
+            width="40px" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false"></img>
+        <div id="carrito" class="dropdown-menu" aria-labelledby="navbarCollapse">
+            <table id="lista-carrito" class="table">
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>cantidad</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if request.session.cart.items %}
+                        {% for key, value in  request.session.cart.items %}
+                        <tr>
+                            <td> <img src="{{ value.imagen}}" width="100%"></td>
+                            <td>{{ value.titulo }} </td>
+                            <td>{{ value.precio }} </td>
+                            <td>{{ value.cantidad }} </td>
+
+                            <td>
+                                <a href="{% url 'cart:add_product_dc' value.comic_id %}" class="btn btn-sm btn-succes">+</a>
+
+                                <a href="{% url 'cart:decrement_product_dc' value.comic_id %}" class="btn btn-sm btn-danger">-</a>
+                            </td>
+                            
+                        </tr>
+                        {% endfor %}
+                    {% else %} 
+                        <tr>
+                            <td colspan=4>
+                                <div class="alert alert-danger text-center">
+                                    No hay productos en el carrito
+                                </div>
+                            </td>
+                        </tr>
+                    {% endif %}    
+                    </tr>  
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan=4>
+                            Total: <span>$</span> {{ cart_total }}
+                        </td>
+                    </tr>
+                    
+                </tfoot>
+            </table>
+
+            <a href="{% url 'cart:clear_cart_dc' %}"  class="btn btn-primary" style="float:left; margin: 10px;"  >Vaciar Carrito</a>
+            <a href="{% url 'cart:procesar_dc' %}" id="procesar-pedido" class="btn btn-danger" style="float:right; margin: 10px;">Procesar
+                Compra</a>   
+        </div>
+    </li>
+</ul> 
+<!--fin carrito -->

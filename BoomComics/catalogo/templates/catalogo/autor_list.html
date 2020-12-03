@@ -1,0 +1,32 @@
+{% extends "bases.html" %}
+
+{% block content %}
+<div class="container" style="background-color: white;">
+    <div class="row my-3"> 
+        <div class="col-12 text-center">
+            <div class="titulos_secciones_container">
+                <span class="titulos_secciones">Autores</span>
+            </div>
+        </div>
+      </div>
+    {% for x in object_list %}
+    <div class="col-lg-10" style="width: 95%;">
+    <p> <span>{{x.pk}} - </span>{{x.nombre}} <span>{{x.apellido}}</span>  
+        {% if user.is_authenticated  %}{% if user.is_staff %}
+        <small>
+            <a href="{% url 'autor_delete' x.pk %}" class="btn btn-danger btn-sm" style="float: right;">(Eliminar)</a>
+        </small>
+        {% else %}{% endif %}{% else %}{% endif %}
+    </p> 
+
+    </div>
+    <br>
+    <br>
+    {% endfor %}
+    <a href="{% url 'index' %}" class="btn btn-primary btn-sm" style="float: left;">volver</a>
+    <br>
+<hr>
+<hr>
+   
+</div>
+{% endblock %}

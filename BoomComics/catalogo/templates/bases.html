@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  {% load static %}
+  <link rel="icon" href="{% static 'images/logo.png' %}">
+  {% block title %}<title>BoomComics!</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/estilos_dc.css' %}">
+  <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  
+</head>
+{% block body %}
+<body class="inicio" >
+{% endblock %}
+  
+      <!-- {% block navbar %} -->
+      <header>
+        <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #ffe600;">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <!-- logo -->
+          <a class="navbar-brand" href="#">
+            {% load static %}
+            <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" width="70" height="50" alt=""></a>
+          </a>
+          
+          
+          <!-- enlaces -->
+          <div class="collapse navbar-collapse" id="opciones">  
+            <div>
+              <ul class="nav nav-pills">
+                <li class="nav-item">
+                  <a class="nav-link " href="{% url 'index' %}" style="color:#000;">Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="nav-link dropdown-toggle btn" style="color: black;" data-toggle="dropdown" href="#">Categorias</button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'dc' 2 %}">DC Comics</a>
+                    <a class="dropdown-item" href="{% url 'marvel' 3 %}">MARVEL Comics</a>
+                    <a class="dropdown-item" href="{% url 'manga' 1 %}">Manga</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="{% url 'contacto' %}" style="color:#000;">Contacto</a>
+                </li>
+                <li class="nav-item"> 
+                  <a class="nav-link " href="{% url 'autor-list' %}" style="color:#000;">Autores</a>
+                </li>
+                {% block header %}
+                 <!-- carrito -->
+                 {% include "carrito.html" %}
+                 <!--fin carrito -->
+                 {% endblock %}
+                 
+              
+            </ul>
+          </div>
+        </div>  
+        <ul class="nav justify-content-end">
+          <!----===============================================================================================-->
+          {% if user.is_authenticated  %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}" style="color : #000; border-style: solid; border-color:#000; background-color: rgb(214, 127, 45); color: white"> Cerrar sesión </a> </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}" style="color: #000; border-style: solid;border-color:#000 ; background-color: rgb(214, 127, 45); color: white"> Ingresar </a> </li>
+        {% endif %}
+        <!----===============================================================================================-->
+        {% if user.is_authenticated  %}{% if user.is_staff %}
+          <li class="nav-item dropdown">
+            <button class="nav-link dropdown-toggle btn" style="color: black; margin-right: 100px;" data-toggle="dropdown" href="#"><img src="{% static 'images/add.png' %}" width="30" height="30" alt=""></button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'comic_create' %}">Añadir comic</a>
+              <a class="dropdown-item" href="{% url 'autor_create' %}">Añadir autor</a>
+            </div>
+          </li>
+        </ul>
+        {% else %}{% endif %}{% else %}{% endif %}
+        </nav>
+      </header>
+      <hr>
+     <!-- {% endblock %} -->
+     {% include 'messages.html' %}
+     <hr>
+      {% block content %}{% endblock %}
+  {% block footer %}
+  <footer>
+    <div class="container">
+      <div class=row>
+        <div class="col-md-4 foot-left">
+            <h3 style="color: black;">
+                Boom<span style="color: red;">Comics!</span>
+            </h3>
+            <p style="color: black;">BoomComics! &copy; 2020</p>
+        </div>
+        
+        <div class="col-md-4 foot-center">
+          
+          <div class="card-body">
+            {% load static %}
+            <img class="img-footer" src="{% static 'images/logo.png'  %}">
+            <hr>
+            <h6 style="text-align: center;">Copyright &copy; BoomComics! 2020</h6>
+          </div> 
+          
+        </div>
+    
+        <div class="col-md-4 foot-rigth">
+    
+            <p class="foot-text-rigth"style="color: #000000;">
+                Contáctanos
+                <br>
+                +56 9 3196 XXXX
+                <br><br>
+                Lunes a viernes de 12:00 a 20:00
+                <br>
+                Sábados de 12:00 a 16:00
+            </p>
+        </div>
+      </div>  
+    </div>  
+  </footer>
+  {% endblock %}
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script type="text/javascript" src="{% static 'js/validar.js' %} "></script>
+  
+  <script>
+    setTimeout(function(){
+      if ($('#msg').length > 0) {
+        $('#msg').remove();
+      }
+    }, 2000)
+  </script>
+  
+</body>
+</html>

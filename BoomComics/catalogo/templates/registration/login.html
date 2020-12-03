@@ -1,0 +1,32 @@
+{% extends "bases.html" %}
+{% block content %}
+<br>
+<br>
+<br>
+<div class="container" style="background-color: white;">
+    <br>
+        <center>
+            <h1>Boom<span style="color: red;">Comics!</span></h1>
+            <hr>
+            <p>Bienvenido a  <em>BoomComics!</em>, tu tienda de comics.</p>
+            <br>
+            <form action="" method="POST">
+                {% csrf_token %}
+            <table> 
+                {{form.as_table}}            
+            </table>
+            <hr>
+            <input class="btn btn-primary" type="submit" value="Iniciar sesión">
+            </form>
+        </center>
+        <br>
+        <br>
+        <br>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

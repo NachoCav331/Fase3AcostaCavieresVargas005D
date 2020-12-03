@@ -1,0 +1,115 @@
+.col-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.titulos_secciones_container {
+    overflow: hidden;
+}
+.titulos_secciones {
+    background: #757685;
+    color: #fff;
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.img
+{
+    width: 100%;
+    height: 450px;   
+}
+.img-logo
+{
+    width: 100%;
+    height: 50%;
+    
+}
+.carro
+{
+    width: 100%;
+    height: 450;
+}
+ 
+footer {
+    margin-bottom: 0px;
+    position: relative;
+    height: 100%;
+    background-color: #ffe600;
+    padding: 10px;
+}
+  
+
+.manga
+{
+    background: url(../images/mangas/fondo.jpg);
+}
+
+.manga-footer
+{
+    margin-bottom: 0px;
+    position: relative;
+    height: 100%;
+    background-color: #91908f;
+    padding: 10px;  
+}
+#carrito {
+    overflow:scroll;
+    height:200px;
+    width:300px;
+}
+#carrito table {
+   width:300px;
+   background-color:lightgray;
+}
+.tit
+{
+    height: 100px;
+}
+.inicio
+{
+    background: url(../images/fondouwu.jpg);
+}
+.marvel 
+{
+    background: url(../images/marvel/marvelin.jpg);
+}
+.dc
+{
+    background: url(../images/dc/covers.jpg);
+}
+
+.marvel-footer 
+{
+    margin-bottom: 0px;
+    position: relative;
+    height: 100%;
+    background-color: #ff0000;
+    padding: 10px;
+}
+.foot-left
+{
+    height: 5%;
+    padding: 10px;
+}
+.foot-rigth
+{
+    height: 5%;
+    padding: 10px;
+}
+.foot-text-rigth
+{
+    text-align: right;
+}
+.img-footer
+{
+    width: 80%;
+    height: 130px; 
+}
+.marvel-span
+{
+    color: yellow;
+}
+
+
+
+

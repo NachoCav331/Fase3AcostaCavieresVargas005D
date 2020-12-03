@@ -1,0 +1,55 @@
+{% extends "bases.html" %}
+{% block content %}
+
+<hr>
+<div class="container" style="background-color: #ffffff;">
+        <hr>
+        <!-- Titulo -->
+      <div class="row my-3"> 
+        <div class="col-12 text-center">
+          <div class="titulos_secciones_container">
+            <span class="titulos_secciones">Contacto</span>
+          </div>
+        </div>
+      </div>
+    <form action="{% url 'index' %}">
+        <!--Tipo de mensaje con Radio como opciones-->
+        <div>
+            <div>
+                <label for="tipo_mensaje">Tipo de mensaje</label>
+            </div>
+            <select name="tipo_mensaje" id="tipoDeMensaje">
+                <option value="">Seleccione un tipo de mensaje</option>
+                <option value="1">Pregunta o consulta</option>
+                <option value="2">Sugerencia</option>
+                <option value="3">Reclamo</option>
+                <option value="4">Quiero contactarme con alguien</option>
+            </select>
+        </div>
+        <hr>
+        <!--Campos a llenar-->
+        <div class="form-group">
+            <label for="nombre">Nombre: </label>
+            <input type="text" class="form-control" id="nombre">
+        </div>
+        <div class="form-group">
+            <label for="celular">Telefono:</label>
+            <input type="number" class="form-control" id="telefono">
+        </div>
+        <div class="form-group">
+            <label for="correo">E-mail:</label>
+            <input type="email" id="correo">
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="mensaje">Mensaje: </label>
+            <textarea class="form-control" name="mensaje" id="mensaje" rows="7"></textarea>
+        </div>
+        <hr>
+        <input type="button" class="btn btn-primary" onclick="validar()" value="Enviar">
+    </form>
+
+    <hr>
+</div>
+
+{% endblock %}

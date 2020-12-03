@@ -1,0 +1,31 @@
+{% extends "bases.html" %}
+
+{% block content %}
+<hr>
+<div class="container" style="background-color: white;">
+    <hr>
+    <div class="row my-3"> 
+      <div class="col-12 text-center">
+          <div class="titulos_secciones_container">
+              <span class="titulos_secciones">Eliminar un comic</span>
+          </div>
+      </div>
+    </div>
+    <hr>  
+    
+        <p><strong>Desea eliminar el comic/manga: </strong>{{comic.titulo}}</p>
+        {% if comic.imagen %}
+        <img class="imgg" height="400px" width="35%"   src="{{ comic.imagen.url }}">
+        {% endif %} 
+        <hr> 
+        <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" action="" value="Eliminar"/>
+        <a href="{% url 'index' %}" class="btn btn-primary btn-sm" style="float:right;">Atrás</a>
+        </form>  
+        <hr>
+        
+</div>  
+<hr>   
+{% endblock %}
+<hr>

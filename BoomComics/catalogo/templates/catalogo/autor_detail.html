@@ -1,0 +1,23 @@
+{% extends "bases.html" %}
+
+{% block content %}
+
+<div class="container" style="background-color: white;">
+    <hr>
+    <div class="row my-3"> 
+      <div class="col-12 text-center">
+          <div class="titulos_secciones_container">
+              <span class="titulos_secciones">Autor</span>
+          </div>
+      </div>
+    </div>
+    <hr>    
+<div>
+    <p><strong> Se ha añadido el autor: </strong> {{autor.nombre}} <span>{{autor.apellido}}</span></p>
+    <a href="{% url 'index' %}" class="btn btn-info btn-sm" style="float:left;;">Aceptar</a>
+</div> 
+<br>
+<br>
+<hr>
+</div>   
+{% endblock %}
